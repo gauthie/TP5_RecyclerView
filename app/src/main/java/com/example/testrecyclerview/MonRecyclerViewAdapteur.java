@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class MonRecyclerViewAdapteur extends RecyclerView.Adapter<MonRecyclerViewAdapteur.ConteneurDeDonnee> {
     private ArrayList<Donnee> donnees;
+    private static DetecteurDeClicSurRecycler detecteurDeClicSurRecycler;
 
     public MonRecyclerViewAdapteur(ArrayList<Donnee> donnees) {
         this.donnees = donnees;
@@ -34,7 +35,12 @@ public class MonRecyclerViewAdapteur extends RecyclerView.Adapter<MonRecyclerVie
         return donnees.size();
     }
 
-    public static class ConteneurDeDonnee extends RecyclerView.ViewHolder {
+    public void setDetecteurDeClicSurRecycler(DetecteurDeClicSurRecycler detecteurDeClicSurRecycler) {
+        this.detecteurDeClicSurRecycler = detecteurDeClicSurRecycler;
+    }
+
+    public  static class ConteneurDeDonnee extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         TextView tv_principal;
         TextView tv_auxiliaire;
 
@@ -42,6 +48,11 @@ public class MonRecyclerViewAdapteur extends RecyclerView.Adapter<MonRecyclerVie
             super(itemView);
             tv_principal = (TextView) itemView.findViewById(R.id.tv_principal);
             tv_auxiliaire = (TextView) itemView.findViewById(R.id.tv_auxiliaire);
+            itemView.setOnClickListener(this);
+        }
+
+        public void onClick(View v) {
+            detecteurDeClicSurRecycler.clicSurRecyclerItem(getAdapterPosition(), v);
         }
     }
 

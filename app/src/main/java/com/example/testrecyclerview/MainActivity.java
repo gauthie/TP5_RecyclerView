@@ -5,10 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DetecteurDeClicSurRecycler{
     private RecyclerView mRecyclerView;
     private MonRecyclerViewAdapteur mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -23,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new MonRecyclerViewAdapteur(getDataSource());
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    protected void onResume() {
+        super.onResume();
+        mAdapter.setDetecteurDeClicSurRecycler(this);
+    }
+
+    public void clicSurRecyclerItem(int position, View v) {
+        Toast.makeText(getApplicationContext(), "Clic sur l'item "+position, Toast.LENGTH_LONG).show();
     }
 
     private ArrayList<Donnee> getDataSource() {
