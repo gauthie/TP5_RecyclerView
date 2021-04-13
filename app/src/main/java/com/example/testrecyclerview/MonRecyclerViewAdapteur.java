@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MonRecyclerViewAdapter extends RecyclerView.Adapter<MonRecyclerViewAdapter.ConteneurDeDonnee> {
+public class MonRecyclerViewAdapteur extends RecyclerView.Adapter<MonRecyclerViewAdapteur.ConteneurDeDonnee> {
     private ArrayList<Donnee> donnees;
 
-    public MonRecyclerViewAdapter(ArrayList<Donnee> donnees) {
+    public MonRecyclerViewAdapteur(ArrayList<Donnee> donnees) {
         this.donnees = donnees;
     }
 
