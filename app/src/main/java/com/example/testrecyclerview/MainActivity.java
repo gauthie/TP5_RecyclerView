@@ -30,9 +30,8 @@ public class MainActivity extends AppCompatActivity implements DetecteurDeClicSu
         mAdapter = new MonRecyclerViewAdapteur(getDataSource());
         mRecyclerView.setAdapter(mAdapter);
         mcoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
-        RecyclerView.ItemDecoration itemDecoration =
-                new DividerItemDecoration(this, R.drawable.divider);
-        mRecyclerView.addItemDecoration(itemDecoration);
+        //RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, R.drawable.divider);
+        //mRecyclerView.addItemDecoration(itemDecoration);
     }
 
     protected void onResume() {
